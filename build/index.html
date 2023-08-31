@@ -1,0 +1,166 @@
+<html lang="en">
+  <head>
+    <!-- Properties -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./bs/bootstrap.min.css" />
+    <link rel="icon" type="image/png" href="/img/logo.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <title>PTR - By LoXewyX</title>
+  </head>
+  <body>
+    <div class="d-flex justify-content-center w-100 mx-100px">
+      <div
+        class="w-100 d-flex flex-column justify-items-center align-items-start"
+        style="margin-right: 100px"
+      >
+        <div class="mb-4">
+          <h2>
+            Python Terminal <i class="fa-brands fa-python"></i> + Reactive HTML
+            <i class="fa-brands fa-react"></i>
+          </h2>
+          <h4 class="mb-4">By LoXewyX</h4>
+        </div>
+        <div class="my-2 d-flex justify-content-center w-100">
+          <div class="me-2" style="width: 5rem">
+            <div>Indent</div>
+            <input
+              class="form-control"
+              id="text_indent"
+              onmousewheel="return false;"
+              type="number"
+              oninput="javascript: if (this.value.length > 2) this.value = this.value.slice(0, 2);"
+              value="0"
+              min="0"
+              max="99"
+              onkeypress="inputNumbers(event)"
+              disabled
+            />
+          </div>
+          <div class="w-100 position-relative">
+            <div>Code</div>
+            <input class="form-control" id="text_input" type="text" />
+            <div id="edit">
+              <i class="fa-solid fa-up-right-from-square"></i>
+            </div>
+          </div>
+        </div>
+        <div class="mt-5 d-flex justify-content-evenly w-100">
+          <div
+            class="btn btn-success w-100 me-2"
+            onclick="getString()"
+            id="compile"
+          >
+            <i class="fa fa-terminal"></i>
+          </div>
+          <div class="btn btn-danger w-100 me-2" onclick="clean()" id="clean">
+            <i class="fa fa-broom"></i>
+          </div>
+          <div class="btn btn-primary w-100" onclick="store()" id="forward">
+            <i class="fa-solid fa-forward"></i>
+          </div>
+        </div>
+      </div>
+      <div class="terminal shadow">
+        <div class="taskbar">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <div class="p-4" id="text">
+          <div style="opacity: 0.5">
+            <h4>Welcome to the Python Evaluated Terminal</h4>
+            <h5>Key Shortcuts:</h5>
+            <div class="container">
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="row">
+                    <div class="col-5 text-end">
+                      <b> <span class="keycap">Enter</span></b>
+                    </div>
+                    <div class="col-7">Forward line.</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-5 text-end">
+                      <b> <span class="keycap">Del</span></b>
+                    </div>
+                    <div class="col-7">Cleansing.</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-5 text-end">
+                      <b>
+                        <span class="keycap">Ctrl</span> +
+                        <span class="keycap">Enter</span>
+                      </b>
+                    </div>
+                    <div class="col-7">Compile.</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-5 text-end">
+                      <b>
+                        <span class="keycap">Ctrl</span> +
+                        <span class="keycap">Alt</span> +
+                        <span class="keycap">
+                          <i class="fa fa-right-long"></i>
+                        </span>
+                      </b>
+                    </div>
+                    <div class="col-7">Increase indentation.</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-5 text-end">
+                      <b>
+                        <span class="keycap">Ctrl</span> +
+                        <span class="keycap">Alt</span> +
+                        <span class="keycap">
+                          <i class="fa fa-left-long"></i>
+                        </span>
+                      </b>
+                    </div>
+                    <div class="col-7">Decrease indentation.</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-5 text-end">
+                      <b>
+                        <span class="keycap">Ctrl</span> +
+                        <span class="keycap">Alt</span> +
+                        <span class="keycap">
+                          <i class="fa fa-up-long"></i>
+                        </span>
+                      </b>
+                    </div>
+                    <div class="col-7">Progress history forward.</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-5 text-end">
+                      <b>
+                        <span class="keycap">Ctrl</span> +
+                        <span class="keycap">Alt</span> +
+                        <span class="keycap">
+                          <i class="fa fa-down-long"></i>
+                        </span>
+                      </b>
+                    </div>
+                    <div class="col-7">Progress history backward.</div>
+                  </div>
+                  <!-- The rest of your rows go here -->
+                </div>
+              </div>
+            </div>
+            <hr />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Core scripts -->
+    <script src="/eel.js"></script>
+    <script src="/index.js"></script>
+  </body>
+</html>

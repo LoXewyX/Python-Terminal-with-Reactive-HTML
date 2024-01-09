@@ -1,4 +1,4 @@
-This test leverages EEL and filelisten.\
+This test uses EEL and filelisten.\
 Whenever a change occurs, the HTML tag is reloaded.
 
 Not as efficient as React reloading.\
